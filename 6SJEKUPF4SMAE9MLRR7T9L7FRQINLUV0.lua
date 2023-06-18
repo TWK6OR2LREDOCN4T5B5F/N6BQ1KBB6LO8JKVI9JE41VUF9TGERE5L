@@ -1,4 +1,3 @@
-
 	getgenv().Enabled = true
 	getgenv().Dis = function()
 		Enabled = false
@@ -9,11 +8,14 @@
 			end
 		end
 	end
+
 	if (not game:IsLoaded()) then 
 		game.Loaded:Wait()
 		task.wait(2)
 	end
+
 	repeat task.wait(0.2) until (game:GetService("Players").LocalPlayer) and (game:GetService("Players").LocalPlayer.Character)
+
 	local Players = game:GetService("Players")
 	local Cashiers = workspace.Cashiers
 	local Player = Players.LocalPlayer
@@ -26,6 +28,9 @@
 			v.Disabled = true
 		end
 	end
+
+
+
 	local GetClosestPart = function(Table)
 		local ClosestPart = nil
 
@@ -41,6 +46,9 @@
 		
 		return ClosestPart
 	end
+
+
+
 	local GetCashier = function()
 		local AvailableCashiers = {}
 		for i,v in pairs(Cashiers:GetChildren()) do 
@@ -58,6 +66,7 @@
 		end
 
 	end
+
 	local GetCashParts = function()
 		local CashParts = {}
 		for i,v in pairs(workspace.Ignored.Drop:GetChildren()) do 
@@ -68,6 +77,8 @@
 		
 		return CashParts
 	end
+
+
 	task.spawn(function()
 		while true and task.wait(0.33) do 
 			if (Enabled == true) and (Player.Character) and (Player.Character:FindFirstChild("FULLY_LOADED_CHAR"))  then 
@@ -112,6 +123,7 @@
 							fireclickdetector(v.ClickDetector)
 						end
 					end
+
 					task.wait()
 				until (#CashParts <= 0) or (Player.Character.Humanoid.Health <= 0) or (Player.Character.BodyEffects["K.O"].Value == true) or (Enabled == false)
 				
